@@ -38,3 +38,15 @@ def test_returned_list_length(input_data: int, expected: list) -> None:
 )
 def test_output_data(input_data: int, expected: list) -> None:
     assert get_coin_combination(input_data) == expected
+
+
+@pytest.mark.parametrize(
+    "input_data,expected",
+    [
+        ("123", TypeError),
+        ([45], TypeError)
+    ]
+)
+def test_exception_rising(input_data: int, expected: type(Exception)) -> None:
+    with pytest.raises(expected):
+        get_coin_combination(input_data)
